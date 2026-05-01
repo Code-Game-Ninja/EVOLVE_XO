@@ -23,7 +23,7 @@ const services = [
     subtitle: 'Intelligent Systems',
     description: 'Intelligent software solutions that leverage machine learning and automation to transform business operations and decision-making.',
     icon: Brain,
-    color: '#D9E6FF',
+    color: '#4200FF',
     deliverables: ['AI Strategy Consulting', 'ML Model Development', 'SaaS Platform Architecture', 'API Integration', 'Natural Language Processing'],
   },
   {
@@ -32,7 +32,7 @@ const services = [
     subtitle: 'Bespoke Engineering',
     description: 'Bespoke software applications engineered to solve complex business challenges and streamline operations at scale.',
     icon: Code2,
-    color: '#FFC81E',
+    color: '#3500D8',
     deliverables: ['Enterprise Applications', 'Process Automation', 'Legacy Modernization', 'System Integration', 'API Development'],
   },
   {
@@ -41,7 +41,7 @@ const services = [
     subtitle: 'Digital Experiences',
     description: 'High-performance web experiences that captivate users and drive measurable business outcomes through superior design and engineering.',
     icon: Globe,
-    color: '#FF6B35',
+    color: '#F9AC7C',
     deliverables: ['Brand Websites', 'E-commerce Platforms', 'Web Applications', 'CMS Solutions', 'Progressive Web Apps'],
   },
   {
@@ -50,7 +50,7 @@ const services = [
     subtitle: 'Growth Acceleration',
     description: 'Data-driven marketing strategies that amplify your brand presence and accelerate growth across digital channels.',
     icon: Megaphone,
-    color: '#4ADE80',
+    color: '#2C01A5',
     deliverables: ['Growth Strategy', 'Content Marketing', 'SEO & SEM', 'Analytics & Attribution', 'Marketing Automation'],
   },
   {
@@ -59,7 +59,7 @@ const services = [
     subtitle: 'Strategic Guidance',
     description: 'Strategic technology consulting to navigate digital transformation and make informed decisions about your technology stack.',
     icon: Lightbulb,
-    color: '#A78BFA',
+    color: '#4200FF',
     deliverables: ['Digital Strategy', 'Tech Stack Assessment', 'Architecture Review', 'Team Augmentation', 'DevOps Consulting'],
   },
 ];
@@ -79,12 +79,13 @@ export const Services = () => {
       const content = section.querySelector('.service-content');
       const deliverables = section.querySelectorAll('.deliverable-item');
 
+      const isDesktop = window.innerWidth >= 1024;
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top top',
-          end: '+=250%',
-          pin: true,
+          start: 'top 80%',
+          end: isDesktop ? '+=250%' : '+=100%',
+          pin: isDesktop,
           scrub: 0.8,
           onEnter: () => setActiveService(index),
           onEnterBack: () => setActiveService(index),
@@ -130,7 +131,7 @@ export const Services = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-[#0A0A0A]">
+    <div ref={containerRef} className="relative bg-[#101010]">
       {/* Progress Indicator */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3">
         {services.map((_, index) => (
@@ -154,7 +155,7 @@ export const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs text-[#6B6B68] uppercase tracking-[0.3em] mb-6 block"
+          className="text-xs text-[#8B7F75] uppercase tracking-[0.3em] mb-6 block"
         >
           Our Expertise
         </motion.span>
@@ -163,7 +164,7 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-heading-1 text-[#F5F5F2] mb-8"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-heading-1 text-[#F5F5F2] mb-4 sm:mb-6 lg:mb-8"
         >
           Services
         </motion.h2>
@@ -172,7 +173,7 @@ export const Services = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-xl text-[#B7B7B2] max-w-2xl text-center mb-12"
+          className="text-base sm:text-lg lg:text-xl text-[#B7B7B2] max-w-2xl text-center mb-8 sm:mb-10 lg:mb-12 px-4 sm:px-0"
         >
           Scroll to explore our comprehensive service offerings
         </motion.p>
@@ -214,7 +215,7 @@ export const Services = () => {
                   <div className="icon-wrapper relative">
                     <div className="absolute inset-0 -m-4 sm:-m-8">
                       <motion.div
-                        className="w-full h-full rounded-full border border-[#FFFFFF]/10"
+                        className="w-full h-full rounded-full border border-[#FBEAD7]/10"
                         animate={{ rotate: 360 }}
                         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                         style={{ borderStyle: 'dashed' }}
@@ -222,7 +223,7 @@ export const Services = () => {
                     </div>
                     <div className="absolute inset-0 -m-8 sm:-m-16">
                       <motion.div
-                        className="w-full h-full rounded-full border border-[#FFFFFF]/5"
+                        className="w-full h-full rounded-full border border-[#FBEAD7]/5"
                         animate={{ rotate: -360 }}
                         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                       />
@@ -250,22 +251,22 @@ export const Services = () => {
                 </div>
 
                 <div className={`service-content ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                  <span 
-                    className="text-sm font-medium uppercase tracking-[0.2em] mb-2 block"
+                  <h3 
+                    className="text-xs sm:text-sm font-medium uppercase tracking-[0.2em] mb-2 block"
                     style={{ color: service.color }}
                   >
                     {service.subtitle}
-                  </span>
+                  </h3>
                   
-                  <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#F5F5F2] mb-4 sm:mb-6">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#F5F5F2] mb-3 sm:mb-4 lg:mb-6">
                     {service.title}
                   </h3>
 
-                  <p className="text-base sm:text-lg text-[#B7B7B2] leading-relaxed mb-6 sm:mb-8 max-w-lg">
+                  <p className="text-sm sm:text-base lg:text-lg text-[#B7B7B2] leading-relaxed mb-4 sm:mb-6 lg:mb-8 max-w-lg">
                     {service.description}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 mb-4 sm:mb-6 lg:mb-8">
                     {service.deliverables.slice(0, 4).map((item, i) => (
                       <div 
                         key={i}
@@ -275,7 +276,7 @@ export const Services = () => {
                           className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                           style={{ background: service.color }}
                         />
-                        <span className="text-xs sm:text-sm text-[#B7B7B2]">{item}</span>
+                        <span className="text-[10px] sm:text-xs lg:text-sm text-[#B7B7B2]">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -283,7 +284,7 @@ export const Services = () => {
                   <div className="flex items-center gap-4">
                     <MagneticButton onClick={() => navigate('/services')}>
                       <span 
-                        className="px-6 py-3 rounded-xl font-medium text-sm flex items-center gap-2 transition-all duration-300"
+                        className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium text-xs sm:text-sm flex items-center gap-2 transition-all duration-300"
                         style={{ background: service.color, color: '#0A0A0A' }}
                       >
                         Explore Service

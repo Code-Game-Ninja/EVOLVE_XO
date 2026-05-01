@@ -91,34 +91,34 @@ export const Testimonials = () => {
 
   const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
     <div className="flex-shrink-0 w-[320px] sm:w-[400px] lg:w-[450px] p-4 sm:p-6 mx-2 sm:mx-4">
-      <div className="glass-panel rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 h-full hover:border-[#D9E6FF]/20 transition-all duration-300 group">
+      <div className="glass-panel rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 h-full hover:border-[#4200FF]/20 transition-all duration-300 group">
         {/* Stars */}
         <div className="flex gap-1 mb-3 sm:mb-4">
           {Array.from({ length: testimonial.rating }).map((_, i) => (
-            <Star key={i} size={14} className="sm:w-4 sm:h-4 text-[#FFC81E] fill-[#FFC81E]" />
+            <Star key={i} size={14} className="sm:w-4 sm:h-4 text-[#F9AC7C] fill-[#F9AC7C]" />
           ))}
         </div>
 
         {/* Quote Icon */}
         <Quote
           size={24}
-          className="sm:w-8 sm:h-8 text-[#F5F5F2]/5 mb-3 sm:mb-4"
+          className="sm:w-8 sm:h-8 text-[#FBEAD7]/5 mb-3 sm:mb-4"
           strokeWidth={1}
         />
 
         {/* Quote Text */}
-        <blockquote className="text-sm sm:text-lg text-[#F5F5F2] leading-relaxed mb-4 sm:mb-6 relative z-10">
+        <blockquote className="text-sm sm:text-lg text-[#FBEAD7] leading-relaxed mb-4 sm:mb-6 relative z-10">
           "{testimonial.quote}"
         </blockquote>
 
         {/* Author */}
         <div className="flex items-center gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-[#FFFFFF]/10">
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#D9E6FF]/20 to-[#1B1B1B] flex items-center justify-center text-xs sm:text-sm font-medium text-[#F5F5F2]">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-[#4200FF]/20 to-[#181818] flex items-center justify-center text-xs sm:text-sm font-medium text-[#FBEAD7]">
             {testimonial.avatar}
           </div>
           <div>
-            <div className="text-sm sm:text-base text-[#F5F5F2] font-medium">{testimonial.author}</div>
-            <div className="text-xs sm:text-sm text-[#6B6B68]">{testimonial.role}</div>
+            <div className="text-sm sm:text-base text-[#FBEAD7] font-medium">{testimonial.author}</div>
+            <div className="text-xs sm:text-sm text-[#8B7F75]">{testimonial.role}</div>
           </div>
         </div>
       </div>
@@ -126,14 +126,14 @@ export const Testimonials = () => {
   );
 
   return (
-    <section ref={sectionRef} className="py-24 overflow-hidden bg-[#0A0A0A]">
+    <section ref={sectionRef} className="py-24 overflow-hidden bg-[#101010]">
       {/* Section Header */}
       <div className="text-center mb-12 sm:mb-16 px-4 sm:px-6">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-xs text-[#6B6B68] uppercase tracking-[0.3em] mb-4 block"
+          className="text-xs text-[#8B7F75] uppercase tracking-[0.3em] mb-4 block"
         >
           Client Stories
         </motion.span>
@@ -142,7 +142,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-3xl sm:text-4xl lg:text-heading-1 text-[#F5F5F2] mb-3 sm:mb-4"
+          className="text-3xl sm:text-4xl lg:text-heading-1 text-[#FBEAD7] mb-3 sm:mb-4"
         >
           Loved by Teams
         </motion.h2>
@@ -151,7 +151,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="text-base sm:text-xl text-[#B7B7B2] max-w-2xl mx-auto px-4"
+          className="text-base sm:text-xl text-[#B8A99A] max-w-2xl mx-auto px-4"
         >
           Don't just take our word for it — hear from the teams we've helped
         </motion.p>
@@ -160,8 +160,8 @@ export const Testimonials = () => {
       {/* Marquee Container */}
       <div className="relative">
         {/* Gradient Masks */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#101010] to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#101010] to-transparent z-10 pointer-events-none" />
 
         {/* Marquee */}
         <div
@@ -188,16 +188,16 @@ export const Testimonials = () => {
             {testimonials.slice(0, 4).map((t, i) => (
               <div
                 key={i}
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#D9E6FF]/30 to-[#1B1B1B] flex items-center justify-center text-xs font-medium text-[#F5F5F2] border-2 border-[#0A0A0A]"
+                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-[#D9E6FF]/30 to-[#181818] flex items-center justify-center text-xs font-medium text-[#FBEAD7] border-2 border-[#101010]"
               >
                 {t.avatar}
               </div>
             ))}
           </div>
-          <span className="text-xs sm:text-sm text-[#6B6B68]">+50 more</span>
+          <span className="text-xs sm:text-sm text-[#8B7F75]">+50 more</span>
         </div>
-        <div className="text-xs sm:text-sm text-[#B7B7B2]">
-          <span className="text-[#FFC81E] font-bold">4.9/5</span> average rating
+        <div className="text-xs sm:text-sm text-[#B8A99A]">
+          <span className="text-[#F9AC7C] font-bold">4.9/5</span> average rating
         </div>
       </motion.div>
     </section>

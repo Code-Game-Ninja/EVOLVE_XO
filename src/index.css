@@ -12,26 +12,29 @@
 
 @layer base {
   :root {
-    /* Core Color Palette */
-    --color-matte-black: #0A0A0A;
-    --color-soft-carbon: #121212;
-    --color-graphite: #1B1B1B;
-    --color-surface: #1F1F1F;
-    --color-mist-white: #F5F5F2;
-    --color-soft-grey: #B7B7B2;
-    --color-mid-grey: #6B6B68;
-    --color-frost-glass: rgba(255, 255, 255, 0.08);
-    --color-border-glass: rgba(255, 255, 255, 0.12);
-    --color-tech-highlight: #D9E6FF;
-    --color-accent-warm: #E87F24;
-    --color-accent-gold: #FFC81E;
+    /* Core Color Palette - Updated */
+    --color-jet-black: #101010;
+    --color-soft-carbon: #181818;
+    --color-graphite: #1E1E1E;
+    --color-surface: #252525;
+    --color-soft-cream: #FBEAD7;
+    --color-warm-peach: #F9AC7C;
+    --color-soft-grey: #B8A99A;
+    --color-mid-grey: #8B7F75;
+    --color-frost-glass: rgba(251, 234, 215, 0.05);
+    --color-border-glass: rgba(251, 234, 215, 0.12);
+    --color-electric-blue: #4200FF;
+    --color-indigo: #3500D8;
+    --color-deep-indigo: #2C01A5;
+    --color-accent-warm: #F9AC7C;
+    --color-accent-gold: #F9AC7C;
 
     /* Extended palette for Tailwind v4 */
-    --color-primary: #F5F5F2;
-    --color-secondary: #B7B7B2;
-    --color-muted: #6B6B68;
-    --color-background: #0A0A0A;
-    --color-foreground: #F5F5F2;
+    --color-primary: #FBEAD7;
+    --color-secondary: #B8A99A;
+    --color-muted: #8B7F75;
+    --color-background: #101010;
+    --color-foreground: #FBEAD7;
   }
 
   * {
@@ -43,14 +46,14 @@
 
   html {
     scroll-behavior: auto;
-    background-color: var(--color-matte-black);
+    background-color: var(--color-jet-black);
     @apply font-sans;
   }
 
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-matte-black);
-    color: var(--color-mist-white);
+    background-color: var(--color-jet-black);
+    color: var(--color-soft-cream);
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;

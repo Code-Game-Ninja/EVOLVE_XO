@@ -24,8 +24,8 @@ const navItems = [
 const Logo = () => {
   return (
     <NavLink to="/" className="flex items-center gap-0 font-bold text-xl tracking-tight">
-      <span className="text-[#F5F5F2]">EVOLVE</span>
-      <span className="text-[#F5F5F2]/40">XO</span>
+      <span className="text-[#FBEAD7]">EVOLVE</span>
+      <span className="text-[#FBEAD7]/40">XO</span>
     </NavLink>
   );
 };
@@ -47,7 +47,7 @@ export const Navbar = () => {
         <Logo />
         <NavItems
           items={navItems}
-          className="text-[#B7B7B2] hover:text-[#F5F5F2]"
+          className="text-[#B7B7B2] hover:text-[#FBEAD7]"
           onItemClick={() => {}}
         />
         <div className="flex items-center gap-4">
@@ -76,7 +76,7 @@ export const Navbar = () => {
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
-          className="bg-[#121212] border border-white/10"
+          className="bg-[#121212] border border-[#FBEAD7]/10"
         >
           {navItems.map((item, idx) => (
             <button
@@ -84,14 +84,14 @@ export const Navbar = () => {
               onClick={() => handleNavClick(item.link)}
               className={`block text-left text-lg font-medium transition-colors ${
                 location.pathname === item.link
-                  ? 'text-[#F5F5F2]'
-                  : 'text-[#6B6B68] hover:text-[#F5F5F2]'
+                  ? 'text-[#FBEAD7]'
+                  : 'text-[#8B7F75] hover:text-[#FBEAD7]'
               }`}
             >
               {item.name}
             </button>
           ))}
-          <div className="flex w-full flex-col gap-4 mt-6 pt-6 border-t border-white/10">
+          <div className="flex w-full flex-col gap-4 mt-6 pt-6 border-t border-[#FBEAD7]/10">
             <motion.button
               onClick={() => handleNavClick('/contact')}
               className="btn-primary w-full"

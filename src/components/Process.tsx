@@ -15,7 +15,7 @@ const processSteps = [
     subtitle: 'Understanding Your Vision',
     description: 'We dive deep into your business goals, user needs, and market landscape to uncover opportunities and define success metrics.',
     icon: Search,
-    color: '#D9E6FF',
+    color: '#4200FF',
     details: ['Stakeholder interviews', 'User research', 'Market analysis', 'Technical audit']
   },
   {
@@ -24,7 +24,7 @@ const processSteps = [
     subtitle: 'Crafting the Roadmap',
     description: 'We architect a comprehensive plan that aligns technology choices with business objectives and user expectations.',
     icon: Lightbulb,
-    color: '#FFC81E',
+    color: '#3500D8',
     details: ['Solution architecture', 'Tech stack selection', 'Project timeline', 'Risk assessment']
   },
   {
@@ -33,7 +33,7 @@ const processSteps = [
     subtitle: 'Engineering Excellence',
     description: 'Our engineering team brings the strategy to life with clean code, iterative development, and continuous testing.',
     icon: Code2,
-    color: '#FF6B35',
+    color: '#F9AC7C',
     details: ['Agile sprints', 'Code reviews', 'Quality assurance', 'Weekly showcases']
   },
   {
@@ -42,7 +42,7 @@ const processSteps = [
     subtitle: 'Go Live & Scale',
     description: 'We deploy your solution with monitoring, optimization, and ongoing support to ensure long-term success.',
     icon: Rocket,
-    color: '#4ADE80',
+    color: '#2C01A5',
     details: ['Production deployment', 'Performance monitoring', 'Analytics setup', 'Growth support']
   }
 ];
@@ -116,8 +116,8 @@ export const Process = () => {
     <section ref={sectionRef} className="py-20 sm:py-32 px-4 sm:px-6 lg:px-12 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-1/3 h-1/2 bg-gradient-to-r from-[#D9E6FF]/5 to-transparent rounded-r-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-1/3 h-1/2 bg-gradient-to-l from-[#FFC81E]/5 to-transparent rounded-l-full blur-3xl" />
+        <div className="absolute top-1/4 left-0 w-1/3 h-1/2 bg-gradient-to-r from-[#4200FF]/5 to-transparent rounded-r-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-1/3 h-1/2 bg-gradient-to-l from-[#F9AC7C]/5 to-transparent rounded-l-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -127,7 +127,7 @@ export const Process = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs text-[#6B6B68] uppercase tracking-[0.3em] mb-4 block"
+            className="text-xs text-[#8B7F75] uppercase tracking-[0.3em] mb-4 block"
           >
             How We Work
           </motion.span>
@@ -136,7 +136,7 @@ export const Process = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-heading-1 text-[#F5F5F2] mb-4 sm:mb-6"
+            className="text-3xl sm:text-4xl lg:text-heading-1 text-[#FBEAD7] mb-4 sm:mb-6"
           >
             Our Process
           </motion.h2>
@@ -145,7 +145,7 @@ export const Process = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base sm:text-xl text-[#B7B7B2] max-w-2xl mx-auto px-4"
+            className="text-base sm:text-xl text-[#B8A99A] max-w-2xl mx-auto px-4"
           >
             A battle-tested methodology that delivers results
           </motion.p>
@@ -154,10 +154,10 @@ export const Process = () => {
         {/* Process Steps */}
         <div className="relative">
           {/* Progress Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#FFFFFF]/10 hidden lg:block">
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[#FBEAD7]/10 hidden lg:block">
             <div
               ref={progressLineRef}
-              className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#D9E6FF] via-[#FFC81E] to-[#4ADE80] origin-top"
+              className="absolute top-0 left-0 w-full bg-gradient-to-b from-[#4200FF] via-[#F9AC7C] to-[#2C01A5] origin-top"
               style={{ height: '100%' }}
             />
           </div>
@@ -178,7 +178,7 @@ export const Process = () => {
                   <div className={`flex justify-center ${isEven ? 'lg:justify-end' : 'lg:order-2 lg:justify-start'}`}>
                     <div className="relative">
                       {/* Connection dot */}
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#0A0A0A] border-2 hidden lg:block"
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-[#101010] border-2 hidden lg:block"
                         style={{ borderColor: step.color }}
                       />
 
@@ -212,13 +212,13 @@ export const Process = () => {
                     >
                       Step {step.id}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#F5F5F2] mb-2">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FBEAD7] mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-base sm:text-lg text-[#B7B7B2] mb-2">
+                    <p className="text-base sm:text-lg text-[#B8A99A] mb-2">
                       {step.subtitle}
                     </p>
-                    <p className="text-sm sm:text-base text-[#6B6B68] mb-4 sm:mb-6 leading-relaxed">
+                    <p className="text-sm sm:text-base text-[#8B7F75] mb-4 sm:mb-6 leading-relaxed">
                       {step.description}
                     </p>
 
@@ -233,7 +233,7 @@ export const Process = () => {
                             className="w-1.5 h-1.5 rounded-full flex-shrink-0"
                             style={{ background: step.color }}
                           />
-                          <span className="text-xs sm:text-sm text-[#B7B7B2]">{detail}</span>
+                          <span className="text-xs sm:text-sm text-[#B8A99A]">{detail}</span>
                         </div>
                       ))}
                     </div>
@@ -252,7 +252,7 @@ export const Process = () => {
           transition={{ delay: 0.3 }}
           className="text-center mt-16 sm:mt-24 px-4"
         >
-          <p className="text-[#B7B7B2] mb-4 sm:mb-6">Ready to start your project?</p>
+          <p className="text-[#B8A99A] mb-4 sm:mb-6">Ready to start your project?</p>
           <MagneticButton onClick={() => navigate('/contact')}>
             <span className="btn-primary group text-sm sm:text-base">
               Start Your Journey

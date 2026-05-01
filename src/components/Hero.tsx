@@ -93,7 +93,7 @@ export const Hero = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background System - Layered */}
-      <div className="absolute inset-0 bg-[#0A0A0A]">
+      <div className="absolute inset-0 bg-[#101010]">
         {/* Grid Overlay */}
         <div className="absolute inset-0 grid-bg opacity-50" />
         
@@ -102,7 +102,7 @@ export const Hero = () => {
           ref={blob1Ref}
           className="absolute -top-40 -left-40 w-[800px] h-[800px] rounded-full"
           style={{
-            background: 'radial-gradient(circle, rgba(217,230,255,0.02) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(66,0,255,0.02) 0%, transparent 70%)',
             filter: 'blur(200px)',
           }}
         />
@@ -121,7 +121,7 @@ export const Hero = () => {
         <div
           className="absolute inset-0"
           style={{
-            background: 'radial-gradient(ellipse at center, transparent 0%, #0A0A0A 70%)',
+            background: 'radial-gradient(ellipse at center, transparent 0%, #101010 70%)',
           }}
         />
       </div>
@@ -134,23 +134,23 @@ export const Hero = () => {
           className="inline-flex items-center gap-2 glass-badge rounded-full px-4 py-2 mb-8 animate-float"
         >
           <span className="status-dot animate-pulse-dot" />
-          <span className="text-xs font-medium text-[#F5F5F2] tracking-wide">
+          <span className="text-xs font-medium text-[#FBEAD7] tracking-wide">
             EVOLVEXO Technologies
           </span>
         </div>
 
         {/* Headline with SplitText */}
-        <h1 className="text-display text-[#F5F5F2] mb-6 leading-tight">
+        <h1 className="text-display text-[#FBEAD7] mb-6 leading-tight">
           <SplitText text="Architecting the future of digital systems." delay={0.2} />
         </h1>
 
         {/* Subtext + Inline Nav Links */}
         <p
           ref={subtextRef}
-          className="text-[#B7B7B2] text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed font-light"
+          className="text-[#B8A99A] text-lg md:text-xl max-w-2xl mx-auto mb-6 leading-relaxed font-light"
         >
           We build AI SaaS products, custom software, and web platforms that evolve with your business.{' '}
-          <span className="text-[#6B6B68]">Engineered for impact.</span>
+          <span className="text-[#8B7F75]">Engineered for impact.</span>
         </p>
 
         {/* Quick Nav Links */}
@@ -162,7 +162,7 @@ export const Hero = () => {
             <button
               key={link}
               onClick={() => handleNavClick(`/${link.toLowerCase()}`)}
-              className="text-[#6B6B68] hover:text-[#F5F5F2] transition-colors duration-300 hover-underline"
+              className="text-[#8B7F75] hover:text-[#FBEAD7] transition-colors duration-300 hover-underline"
             >
               {link}
             </button>
@@ -191,16 +191,16 @@ export const Hero = () => {
       <div
         className="absolute bottom-0 left-0 right-0 h-[200px] pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, #0A0A0A 0%, transparent 100%)',
+          background: 'linear-gradient(to top, #101010 0%, transparent 100%)',
         }}
       />
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-xs text-[#6B6B68] tracking-[0.3em] uppercase">
+        <span className="text-xs text-[#8B7F75] tracking-[0.3em] uppercase">
           Scroll to explore
         </span>
-        <ChevronDown size={20} className="text-[#6B6B68] animate-bounce-slow" />
+        <ChevronDown size={20} className="text-[#8B7F75] animate-bounce-slow" />
       </div>
     </section>
   );

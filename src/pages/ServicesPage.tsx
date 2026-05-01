@@ -30,7 +30,7 @@ const services = [
     title: 'AI SaaS',
     description: 'Intelligent software solutions that leverage machine learning and automation to transform business operations and decision-making. We build AI-powered platforms that learn, adapt, and deliver measurable ROI.',
     icon: Brain,
-    color: '#D9E6FF',
+    color: '#4200FF',
     deliverables: [
       'AI Strategy Consulting',
       'ML Model Development',
@@ -51,7 +51,7 @@ const services = [
     title: 'Custom Software',
     description: 'Bespoke software applications engineered to solve complex business challenges. From enterprise systems to process automation, we build software that becomes your competitive advantage.',
     icon: Code2,
-    color: '#FFC81E',
+    color: '#F9AC7C',
     deliverables: [
       'Enterprise Applications',
       'Process Automation',
@@ -72,7 +72,7 @@ const services = [
     title: 'Web Platforms',
     description: 'High-performance web experiences that captivate users and drive business outcomes. We combine stunning design with rock-solid engineering for web solutions that stand out.',
     icon: Globe,
-    color: '#E87F24',
+    color: '#3500D8',
     deliverables: [
       'Brand Websites',
       'E-commerce Platforms',
@@ -93,7 +93,7 @@ const services = [
     title: 'Digital Marketing',
     description: 'Data-driven marketing strategies that amplify your brand presence and accelerate growth. We combine creativity with analytics to deliver campaigns that convert.',
     icon: Megaphone,
-    color: '#22c55e',
+    color: '#2C01A5',
     deliverables: [
       'Growth Strategy',
       'Content Marketing',
@@ -114,7 +114,7 @@ const services = [
     title: 'Tech Advisory',
     description: 'Strategic technology consulting to navigate digital transformation. We help you make informed decisions about your technology stack, architecture, and digital roadmap.',
     icon: Lightbulb,
-    color: '#a855f7',
+    color: '#4200FF',
     deliverables: [
       'Digital Strategy',
       'Tech Stack Assessment',
@@ -147,7 +147,7 @@ export const ServicesPage = () => {
   };
 
   return (
-    <div className="relative bg-[#0A0A0A]">
+    <div className="relative bg-[#101010]">
       {/* Hero Section */}
       <section className="min-h-[50vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 relative overflow-hidden pt-24 sm:pt-32 pb-12 sm:pb-16">
         {/* Background gradient */}
@@ -157,7 +157,7 @@ export const ServicesPage = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div 
             className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full"
-            style={{ background: 'radial-gradient(circle, rgba(217,230,255,0.08) 0%, transparent 70%)' }}
+            style={{ background: 'radial-gradient(circle, rgba(66,0,255,0.08) 0%, transparent 70%)' }}
             animate={{ 
               x: [0, 50, 0], 
               y: [0, 30, 0],
@@ -182,12 +182,12 @@ export const ServicesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-xs text-[#6B6B68] uppercase tracking-[0.3em] mb-6 block"
+            className="text-xs text-[#8B7F75] uppercase tracking-[0.3em] mb-6 block"
           >
             Our Expertise
           </motion.span>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-display text-[#F5F5F2] mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-display text-[#FBEAD7] mb-4 sm:mb-6 lg:mb-8">
             <SplitText text="Services" delay={0.2} />
           </h1>
           
@@ -195,7 +195,7 @@ export const ServicesPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-lg sm:text-xl md:text-2xl text-[#B7B7B2] max-w-2xl mx-auto mb-8 sm:mb-12 px-4"
+            className="text-lg sm:text-xl md:text-2xl text-[#B8A99A] max-w-2xl mx-auto mb-8 sm:mb-12 px-4"
           >
             Scroll down to explore our comprehensive digital solutions
           </motion.p>
@@ -206,12 +206,12 @@ export const ServicesPage = () => {
             transition={{ delay: 0.6 }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-xs text-[#6B6B68] uppercase tracking-wider">Scroll to explore</span>
+            <span className="text-xs text-[#8B7F75] uppercase tracking-wider">Scroll to explore</span>
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
-              <ArrowDown size={24} className="text-[#D9E6FF]" />
+              <ArrowDown size={24} className="text-[#4200FF]" />
             </motion.div>
           </motion.div>
         </div>
@@ -233,42 +233,42 @@ export const ServicesPage = () => {
                 <div
                   key={service.id}
                   onClick={() => handleCardClick(service)}
-                  className={`
-                    w-[280px] h-[380px] sm:w-[320px] sm:h-[420px] 
-                    rounded-2xl border-2 p-6 flex flex-col justify-between
+                  className="
+                    w-[260px] h-[340px] sm:w-[300px] sm:h-[400px] 
+                    rounded-2xl border-2 p-4 sm:p-6 flex flex-col justify-between
                     transition-all duration-500 cursor-pointer
                     ${isActive 
-                      ? 'bg-[#1B1B1B] border-[#D9E6FF] scale-100 shadow-2xl shadow-[#D9E6FF]/20' 
-                      : 'bg-[#121212] border-[#FFFFFF]/10 scale-95 opacity-70'
+                      ? 'bg-[#181818] border-[#4200FF] scale-100 shadow-2xl shadow-[#4200FF]/20' 
+                      : 'bg-[#1E1E1E] border-[#FBEAD7]/10 scale-95 opacity-70'
                     }
-                  `}
+                  "
                 >
                   {/* Top Section */}
                   <div className="w-full flex justify-between items-start">
-                    <span className={`font-mono text-2xl font-bold ${isActive ? 'text-[#D9E6FF]' : 'text-[#6B6B68]'}`}>
+                    <span className={`font-mono text-lg sm:text-xl font-bold ${isActive ? 'text-[#4200FF]' : 'text-[#8B7F75]'}`}>
                       {service.id}
                     </span>
-                    {isActive && <Check className="w-6 h-6 text-[#D9E6FF]" />}
+                    {isActive && <Check className="w-6 h-6 text-[#4200FF]" />}
                   </div>
                   
                   {/* Icon */}
                   <div className="flex justify-center my-4">
                     <div 
-                      className="w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center transition-all duration-500"
                       style={{ background: isActive ? `${service.color}30` : `${service.color}10` }}
                     >
                       <IconComponent 
-                        size={40} 
+                        size={32} 
                         style={{ color: service.color }}
-                        className="transition-transform duration-500"
+                        className="sm:w-10 sm:h-10 transition-transform duration-500"
                       />
                     </div>
                   </div>
                   
                   {/* Content */}
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold mb-2 text-[#F5F5F2]">{service.title}</h3>
-                    <p className={`text-sm mb-4 line-clamp-3 ${isActive ? 'text-[#B7B7B2]' : 'text-[#6B6B68]'}`}>
+                    <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 text-[#FBEAD7]">{service.title}</h3>
+                    <p className={`text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-3 ${isActive ? 'text-[#B8A99A]' : 'text-[#8B7F75]'}`}>
                       {service.description}
                     </p>
                     
@@ -280,7 +280,7 @@ export const ServicesPage = () => {
                             className="w-1.5 h-1.5 rounded-full"
                             style={{ background: service.color }}
                           />
-                          <span className={isActive ? 'text-[#B7B7B2]' : 'text-[#6B6B68]'}>
+                          <span className={isActive ? 'text-[#B8A99A]' : 'text-[#8B7F75]'}>
                             {item}
                           </span>
                         </div>
@@ -295,8 +295,8 @@ export const ServicesPage = () => {
                       mt-4 w-full py-3 rounded-xl font-medium text-sm
                       transition-all duration-300 flex items-center justify-center gap-2
                       ${isActive 
-                        ? 'bg-[#F5F5F2] text-[#0A0A0A] hover:bg-[#D9E6FF]' 
-                        : 'bg-[#FFFFFF]/5 text-[#6B6B68]'
+                        ? 'bg-[#F5F5F2] text-[#0A0A0A] hover:bg-[#4200FF]' 
+                        : 'bg-[#FFFFFF]/5 text-[#8B7F75]'
                       }
                     `}
                   >
@@ -343,27 +343,27 @@ export const ServicesPage = () => {
                   duration: 0.5
                 }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-[#121212] border border-[#FFFFFF]/10 rounded-3xl shadow-2xl my-8"
+                className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-[#1E1E1E] border border-[#FBEAD7]/10 rounded-3xl shadow-2xl my-8"
               >
                 {/* Close Button */}
               <button
                 onClick={handleCloseModal}
-                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#1B1B1B] border border-[#FFFFFF]/10 flex items-center justify-center text-[#6B6B68] hover:text-[#F5F5F2] hover:border-[#D9E6FF] transition-all duration-300"
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#181818] border border-[#FBEAD7]/10 flex items-center justify-center text-[#8B7F75] hover:text-[#FBEAD7] hover:border-[#4200FF] transition-all duration-300"
               >
                 <X size={20} />
               </button>
 
                 {/* Modal Header */}
-                <div className="p-8 sm:p-12 border-b border-[#FFFFFF]/10 sticky top-0 bg-[#121212] z-10">
-                <div className="flex items-start gap-6">
+                <div className="p-6 sm:p-8 lg:p-12 border-b border-[#FBEAD7]/10 sticky top-0 bg-[#1E1E1E] z-10">
+                  <div className="flex items-start gap-4 sm:gap-6">
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.2, type: 'spring', damping: 20 }}
-                    className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0"
                     style={{ background: `${selectedService.color}20` }}
                   >
-                    <selectedService.icon size={40} style={{ color: selectedService.color }} />
+                    <selectedService.icon size={32} className="sm:w-10 sm:h-10" style={{ color: selectedService.color }} />
                   </motion.div>
                   
                   <div className="flex-1">
@@ -371,7 +371,7 @@ export const ServicesPage = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 }}
-                      className="text-sm font-mono text-[#6B6B68] mb-2 block"
+                      className="text-sm font-mono text-[#8B7F75] mb-2 block"
                     >
                       Service {selectedService.id} / 05
                     </motion.span>
@@ -380,7 +380,7 @@ export const ServicesPage = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.15 }}
-                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F5F2] mb-4"
+                      className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FBEAD7] mb-3 sm:mb-4"
                     >
                       {selectedService.title}
                     </motion.h2>
@@ -389,7 +389,7 @@ export const ServicesPage = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 }}
-                      className="text-[#B7B7B2] text-lg"
+                      className="text-[#B8A99A] text-sm sm:text-base lg:text-lg"
                     >
                       {selectedService.description}
                     </motion.p>
@@ -398,14 +398,14 @@ export const ServicesPage = () => {
               </div>
 
                 {/* Modal Body */}
-                <div className="p-8 sm:p-12 space-y-12">
+                <div className="p-6 sm:p-8 lg:p-12 space-y-8 sm:space-y-12">
                 {/* Deliverables Section */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                  <h3 className="text-sm font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                     <Sparkles size={18} style={{ color: selectedService.color }} />
                     What We Deliver
                   </h3>
@@ -417,13 +417,13 @@ export const ServicesPage = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 + i * 0.05 }}
-                        className="flex items-center gap-3 p-4 rounded-xl bg-[#1B1B1B] border border-[#FFFFFF]/5 hover:border-[#FFFFFF]/10 transition-colors"
+                        className="flex items-center gap-3 p-4 rounded-xl bg-[#181818] border border-[#FBEAD7]/5 hover:border-[#FBEAD7]/10 transition-colors"
                       >
                         <div
                           className="w-2 h-2 rounded-full flex-shrink-0"
                           style={{ background: selectedService.color }}
                         />
-                        <span className="text-[#B7B7B2]">{item}</span>
+                        <span className="text-[#B8A99A]">{item}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -435,7 +435,7 @@ export const ServicesPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
                 >
-                  <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                  <h3 className="text-sm font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                     <Clock size={18} style={{ color: selectedService.color }} />
                     Our Process
                   </h3>
@@ -450,18 +450,18 @@ export const ServicesPage = () => {
                         className="flex gap-4 items-start"
                       >
                         <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-lg font-bold"
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-base sm:text-lg font-bold"
                           style={{ background: `${selectedService.color}20`, color: selectedService.color }}
                         >
                           {step.step}
                         </div>
-                        <div className="flex-1 pt-2">
-                          <h4 className="text-[#F5F5F2] font-medium text-lg mb-1">{step.title}</h4>
-                          <p className="text-[#6B6B68] text-sm">{step.desc}</p>
+                        <div className="flex-1 pt-1 sm:pt-2">
+                          <h4 className="text-[#FBEAD7] font-medium text-base sm:text-lg mb-1">{step.title}</h4>
+                          <p className="text-[#8B7F75] text-xs sm:text-sm">{step.desc}</p>
                         </div>
                         {i < selectedService.process.length - 1 && (
                           <div className="hidden sm:flex items-center pt-4">
-                            <ChevronRight size={20} className="text-[#6B6B68]" />
+                            <ChevronRight size={20} className="text-[#8B7F75]" />
                           </div>
                         )}
                       </motion.div>
@@ -474,12 +474,12 @@ export const ServicesPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 }}
-                  className="pt-6 border-t border-[#FFFFFF]/10"
+                  className="pt-6 border-t border-[#FBEAD7]/10"
                 >
                   <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div className="flex items-center gap-3">
                       <Zap size={20} style={{ color: selectedService.color }} />
-                      <span className="text-[#B7B7B2]">Ready to start your project?</span>
+                      <span className="text-[#B8A99A]">Ready to start your project?</span>
                     </div>
                     
                     <MagneticButton onClick={() => { handleCloseModal(); navigate('/contact'); }}>
@@ -504,7 +504,7 @@ export const ServicesPage = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-heading-1 text-[#F5F5F2] mb-4 sm:mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-heading-1 text-[#FBEAD7] mb-3 sm:mb-4 lg:mb-6"
           >
             Ready to get started?
           </motion.h2>
@@ -513,7 +513,7 @@ export const ServicesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg text-[#B7B7B2] mb-8"
+            className="text-base sm:text-lg text-[#B8A99A] mb-6 sm:mb-8"
           >
             Let's discuss how we can help transform your business.
           </motion.p>

@@ -40,9 +40,14 @@ export const Footer = () => {
   const [footerHeight, setFooterHeight] = useState(0);
 
   useEffect(() => {
-    if (footerRef.current) {
-      setFooterHeight(footerRef.current.offsetHeight);
-    }
+    const updateHeight = () => {
+      if (footerRef.current) {
+        setFooterHeight(footerRef.current.offsetHeight);
+      }
+    };
+    updateHeight();
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
   }, []);
 
   // Expose footer height to parent via CSS variable
@@ -60,7 +65,7 @@ export const Footer = () => {
   return (
     <footer 
       ref={footerRef}
-      className="fixed bottom-0 left-0 right-0 z-0 pt-24 pb-12 px-6 lg:px-12 bg-[#0A0A0A]"
+      className="fixed bottom-0 left-0 right-0 z-0 pt-24 pb-12 px-6 lg:px-12 bg-[#1E1E1E]"
       style={{ 
         // Negative margin to account for any spacing issues
         marginTop: '-1px'
@@ -68,14 +73,14 @@ export const Footer = () => {
     >
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 lg:gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 lg:gap-12 mb-16">
           {/* Brand Column */}
           <div className="col-span-2">
             <div className="flex items-center gap-0 font-bold text-xl tracking-tight mb-4">
-              <span className="text-[#F5F5F2]">EVOLVE</span>
-              <span className="text-[#F5F5F2]/40">XO</span>
+              <span className="text-[#FBEAD7]">EVOLVE</span>
+              <span className="text-[#FBEAD7]/40">XO</span>
             </div>
-            <p className="text-sm text-[#6B6B68] leading-relaxed mb-6 max-w-xs">
+            <p className="text-sm text-[#8B7F75] leading-relaxed mb-6 max-w-xs">
               An engineering-led agency building systems that evolve. Based in Kanpur, serving globally.
             </p>
             
@@ -83,12 +88,12 @@ export const Footer = () => {
             <div className="space-y-3">
               <a
                 href="mailto:contact@evolvexo.in"
-                className="flex items-center gap-2 text-sm text-[#B7B7B2] hover:text-[#F5F5F2] transition-colors"
+                className="flex items-center gap-2 text-sm text-[#B8A99A] hover:text-[#FBEAD7] transition-colors"
               >
                 <Mail size={14} />
                 contact@evolvexo.in
               </a>
-              <div className="flex items-start gap-2 text-sm text-[#B7B7B2]">
+              <div className="flex items-start gap-2 text-sm text-[#B8A99A]">
                 <MapPin size={14} className="mt-0.5" />
                 <span>117/K/76 Sarvodaya Nagar<br />Kanpur, 208025</span>
               </div>
@@ -97,7 +102,7 @@ export const Footer = () => {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-4">
+            <h4 className="text-xs font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-4">
               Services
             </h4>
             <ul className="space-y-3">
@@ -105,7 +110,7 @@ export const Footer = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-sm text-[#6B6B68] hover:text-[#F5F5F2] transition-colors"
+                    className="text-sm text-[#8B7F75] hover:text-[#FBEAD7] transition-colors"
                   >
                     {link.name}
                   </button>
@@ -116,7 +121,7 @@ export const Footer = () => {
 
           {/* Solutions */}
           <div>
-            <h4 className="text-xs font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-4">
+            <h4 className="text-xs font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-4">
               Solutions
             </h4>
             <ul className="space-y-3">
@@ -124,7 +129,7 @@ export const Footer = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-sm text-[#6B6B68] hover:text-[#F5F5F2] transition-colors"
+                    className="text-sm text-[#8B7F75] hover:text-[#FBEAD7] transition-colors"
                   >
                     {link.name}
                   </button>
@@ -135,7 +140,7 @@ export const Footer = () => {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-4">
+            <h4 className="text-xs font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-4">
               Company
             </h4>
             <ul className="space-y-3">
@@ -143,7 +148,7 @@ export const Footer = () => {
                 <li key={link.name}>
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="text-sm text-[#6B6B68] hover:text-[#F5F5F2] transition-colors"
+                    className="text-sm text-[#8B7F75] hover:text-[#FBEAD7] transition-colors"
                   >
                     {link.name}
                   </button>
@@ -154,14 +159,14 @@ export const Footer = () => {
 
           {/* Get in Touch */}
           <div>
-            <h4 className="text-xs font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-4">
+            <h4 className="text-xs font-medium text-[#FBEAD7] uppercase tracking-[0.2em] mb-4">
               Get in Touch
             </h4>
             <ul className="space-y-3">
               <li>
                 <button
                   onClick={() => handleNavClick('/contact')}
-                  className="text-sm text-[#6B6B68] hover:text-[#F5F5F2] transition-colors flex items-center gap-1 group"
+                  className="text-sm text-[#8B7F75] hover:text-[#FBEAD7] transition-colors flex items-center gap-1 group"
                 >
                   Contact
                   <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -173,7 +178,7 @@ export const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[#6B6B68] hover:text-[#F5F5F2] transition-colors flex items-center gap-1 group"
+                    className="text-sm text-[#8B7F75] hover:text-[#FBEAD7] transition-colors flex items-center gap-1 group"
                   >
                     {link.name}
                     <ArrowUpRight size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -188,8 +193,8 @@ export const Footer = () => {
         <div className="glass-panel rounded-xl p-6 md:p-8 mb-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h4 className="text-[#F5F5F2] font-medium mb-1">Stay Updated</h4>
-              <p className="text-sm text-[#6B6B68]">Get insights on technology, design, and digital transformation.</p>
+              <h4 className="text-[#FBEAD7] font-medium mb-1">Stay Updated</h4>
+              <p className="text-sm text-[#8B7F75]">Get insights on technology, design, and digital transformation.</p>
             </div>
             <div className="flex w-full md:w-auto gap-3">
               <input
@@ -204,20 +209,20 @@ export const Footer = () => {
 
         {/* Large Reveal Text */}
         <motion.div 
-          className="mt-16 mb-8 overflow-hidden"
+          className="mt-16 mb-8"
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-[12vw] md:text-[10vw] lg:text-[8vw] font-bold text-[#F5F5F2]/5 leading-none tracking-tighter">
+          <h2 className="text-[8vw] sm:text-[10vw] lg:text-[8vw] font-bold text-[#FBEAD7]/5 leading-none tracking-tighter whitespace-nowrap overflow-hidden text-center">
             EVOLVEXO
           </h2>
         </motion.div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[#FFFFFF]/5">
-          <p className="text-xs text-[#6B6B68]">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-[#FBEAD7]/5">
+          <p className="text-xs text-[#8B7F75]">
             © {new Date().getFullYear()} EVOLVEXO Technologies. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
@@ -225,7 +230,7 @@ export const Footer = () => {
               <button
                 key={link.name}
                 onClick={() => handleNavClick(link.href)}
-                className="text-xs text-[#6B6B68] hover:text-[#F5F5F2] transition-colors"
+                className="text-xs text-[#8B7F75] hover:text-[#FBEAD7] transition-colors"
               >
                 {link.name}
               </button>
