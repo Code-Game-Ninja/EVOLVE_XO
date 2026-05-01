@@ -41,13 +41,13 @@ export const Navbar = () => {
   };
 
   return (
-    <ResizableNavbar className="fixed top-0 inset-x-0 z-50">
+    <ResizableNavbar>
       {/* Desktop Navigation */}
-      <NavBody className="bg-transparent dark:bg-transparent [&.visible]:bg-[#121212]/90 [&.visible]:border [&.visible]:border-white/10">
+      <NavBody>
         <Logo />
         <NavItems
           items={navItems}
-          className="text-[#6B6B68] hover:text-[#F5F5F2]"
+          className="text-[#B7B7B2] hover:text-[#F5F5F2]"
           onItemClick={() => {}}
         />
         <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export const Navbar = () => {
       </NavBody>
 
       {/* Mobile Navigation */}
-      <MobileNav className="bg-transparent dark:bg-transparent [&.visible]:bg-[#121212]/90 [&.visible]:border [&.visible]:border-white/10">
+      <MobileNav>
         <MobileNavHeader>
           <Logo />
           <MobileNavToggle

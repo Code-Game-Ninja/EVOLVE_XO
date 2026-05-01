@@ -1,22 +1,26 @@
-import { useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Brain, 
   Code2, 
   Globe, 
   Megaphone, 
   Lightbulb,
-  CheckCircle2,
   ArrowRight,
+  ArrowDown,
+  Check,
+  X,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  Clock,
+  Zap
 } from 'lucide-react';
 import { SplitText } from '../components/ui/SplitText';
-import { GlowCard } from '../components/ui/GlowCard';
 import { MagneticButton } from '../components/ui/MagneticButton';
 import { useNavigate } from 'react-router-dom';
+import { RadialScrollGallery } from '../components/satisui/radial-scroll-gallery';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +30,7 @@ const services = [
     title: 'AI SaaS',
     description: 'Intelligent software solutions that leverage machine learning and automation to transform business operations and decision-making. We build AI-powered platforms that learn, adapt, and deliver measurable ROI.',
     icon: Brain,
+    color: '#D9E6FF',
     deliverables: [
       'AI Strategy Consulting',
       'ML Model Development',
@@ -46,6 +51,7 @@ const services = [
     title: 'Custom Software',
     description: 'Bespoke software applications engineered to solve complex business challenges. From enterprise systems to process automation, we build software that becomes your competitive advantage.',
     icon: Code2,
+    color: '#FFC81E',
     deliverables: [
       'Enterprise Applications',
       'Process Automation',
@@ -63,9 +69,10 @@ const services = [
   },
   {
     id: '03',
-    title: 'Websites & Web Platforms',
+    title: 'Web Platforms',
     description: 'High-performance web experiences that captivate users and drive business outcomes. We combine stunning design with rock-solid engineering for web solutions that stand out.',
     icon: Globe,
+    color: '#E87F24',
     deliverables: [
       'Brand Websites',
       'E-commerce Platforms',
@@ -86,6 +93,7 @@ const services = [
     title: 'Digital Marketing',
     description: 'Data-driven marketing strategies that amplify your brand presence and accelerate growth. We combine creativity with analytics to deliver campaigns that convert.',
     icon: Megaphone,
+    color: '#22c55e',
     deliverables: [
       'Growth Strategy',
       'Content Marketing',
@@ -106,6 +114,7 @@ const services = [
     title: 'Tech Advisory',
     description: 'Strategic technology consulting to navigate digital transformation. We help you make informed decisions about your technology stack, architecture, and digital roadmap.',
     icon: Lightbulb,
+    color: '#a855f7',
     deliverables: [
       'Digital Strategy',
       'Tech Stack Assessment',
@@ -125,228 +134,402 @@ const services = [
 
 export const ServicesPage = () => {
   const navigate = useNavigate();
-  const sectionsRef = useRef<(HTMLElement | null)[]>([]);
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
 
-  useEffect(() => {
-    sectionsRef.current.forEach((section) => {
-      if (!section) return;
+  const handleCardClick = (service: typeof services[0]) => {
+    setSelectedService(service);
+    document.body.style.overflow = 'hidden';
+  };
 
-      const leftContent = section.querySelector('.service-left');
-      const rightContent = section.querySelector('.service-right');
-
-      gsap.fromTo(
-        leftContent,
-        { x: -60, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      gsap.fromTo(
-        rightContent,
-        { x: 60, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          delay: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    });
-  }, []);
+  const handleCloseModal = () => {
+    setSelectedService(null);
+    document.body.style.overflow = '';
+  };
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with Animated Background */}
-      <section className="pt-32 pb-16 px-6 lg:px-12 relative overflow-hidden">
-        {/* Animated Background Elements */}
+    <div className="relative bg-[#0A0A0A]">
+      {/* Hero Section */}
+      <section className="min-h-[50vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 relative overflow-hidden pt-24 sm:pt-32 pb-12 sm:pb-16">
+        {/* Background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A] via-[#0f0f0f] to-[#0A0A0A]" />
+        
+        {/* Animated background blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#D9E6FF]/5 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#FFC81E]/5 rounded-full blur-3xl animate-pulse delay-1000" />
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(217,230,255,0.08) 0%, transparent 70%)' }}
+            animate={{ 
+              x: [0, 50, 0], 
+              y: [0, 30, 0],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div 
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full"
+            style={{ background: 'radial-gradient(circle, rgba(255,200,30,0.06) 0%, transparent 70%)' }}
+            animate={{ 
+              x: [0, -40, 0], 
+              y: [0, -50, 0],
+              scale: [1, 1.3, 1]
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
 
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="relative z-10 text-center max-w-5xl mx-auto">
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="text-xs text-[#6B6B68] uppercase tracking-[0.3em] mb-6 block"
           >
             Our Expertise
           </motion.span>
-          <h1 className="text-display text-[#F5F5F2] mb-6">
-            <SplitText text="Services." scrollTrigger />
+          
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-display text-[#F5F5F2] mb-6 sm:mb-8">
+            <SplitText text="Services" delay={0.2} />
           </h1>
+          
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-xl text-[#B7B7B2] max-w-2xl"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-lg sm:text-xl md:text-2xl text-[#B7B7B2] max-w-2xl mx-auto mb-8 sm:mb-12 px-4"
           >
-            Comprehensive digital solutions engineered for impact. From AI to web platforms, we build what moves your business forward.
+            Scroll down to explore our comprehensive digital solutions
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col items-center gap-2"
+          >
+            <span className="text-xs text-[#6B6B68] uppercase tracking-wider">Scroll to explore</span>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              <ArrowDown size={24} className="text-[#D9E6FF]" />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Service Sections */}
-      <div className="pb-24">
-        {services.map((service, index) => {
-          const IconComponent = service.icon;
-          const isEven = index % 2 === 0;
-
-          return (
-            <section
-              key={service.id}
-              ref={(el) => { sectionsRef.current[index] = el; }}
-              className={`py-20 px-6 lg:px-12 ${isEven ? 'bg-[#0A0A0A]' : 'bg-[#121212]'}`}
-            >
-              <div className="max-w-7xl mx-auto">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-                  {/* Left Content */}
-                  <div className="service-left">
-                    <motion.div 
-                      className="flex items-center gap-4 mb-6"
-                      whileHover={{ x: 10 }}
-                      transition={{ type: "spring", stiffness: 300 }}
+      {/* Radial Scroll Gallery Section */}
+      <section className="relative">
+        <RadialScrollGallery
+          baseRadius={400}
+          mobileRadius={220}
+          scrollDuration={2000}
+          visiblePercentage={45}
+        >
+          {(hoveredIndex) =>
+            services.map((service, index) => {
+              const IconComponent = service.icon;
+              const isActive = hoveredIndex === index;
+                            return (
+                <div
+                  key={service.id}
+                  onClick={() => handleCardClick(service)}
+                  className={`
+                    w-[280px] h-[380px] sm:w-[320px] sm:h-[420px] 
+                    rounded-2xl border-2 p-6 flex flex-col justify-between
+                    transition-all duration-500 cursor-pointer
+                    ${isActive 
+                      ? 'bg-[#1B1B1B] border-[#D9E6FF] scale-100 shadow-2xl shadow-[#D9E6FF]/20' 
+                      : 'bg-[#121212] border-[#FFFFFF]/10 scale-95 opacity-70'
+                    }
+                  `}
+                >
+                  {/* Top Section */}
+                  <div className="w-full flex justify-between items-start">
+                    <span className={`font-mono text-2xl font-bold ${isActive ? 'text-[#D9E6FF]' : 'text-[#6B6B68]'}`}>
+                      {service.id}
+                    </span>
+                    {isActive && <Check className="w-6 h-6 text-[#D9E6FF]" />}
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className="flex justify-center my-4">
+                    <div 
+                      className="w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500"
+                      style={{ background: isActive ? `${service.color}30` : `${service.color}10` }}
                     >
-                      <motion.div 
-                        className="w-14 h-14 rounded-full glass-badge flex items-center justify-center cursor-pointer"
-                        whileHover={{ 
-                          scale: 1.1, 
-                          rotate: 360,
-                          backgroundColor: "rgba(217, 230, 255, 0.1)"
-                        }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <IconComponent size={28} className="text-[#F5F5F2]" />
-                      </motion.div>
-                      <span className="text-sm font-mono text-[#6B6B68]">{service.id}</span>
-                    </motion.div>
-
-                    <h2 className="text-3xl md:text-4xl font-bold text-[#F5F5F2] mb-6 group-hover:text-[#D9E6FF] transition-colors">
-                      {service.title}
-                    </h2>
-
-                    <p className="text-lg text-[#B7B7B2] leading-relaxed mb-8">
+                      <IconComponent 
+                        size={40} 
+                        style={{ color: service.color }}
+                        className="transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold mb-2 text-[#F5F5F2]">{service.title}</h3>
+                    <p className={`text-sm mb-4 line-clamp-3 ${isActive ? 'text-[#B7B7B2]' : 'text-[#6B6B68]'}`}>
                       {service.description}
                     </p>
+                    
+                    {/* Deliverables Preview */}
+                    <div className="space-y-1">
+                      {service.deliverables.slice(0, 3).map((item, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs">
+                          <div 
+                            className="w-1.5 h-1.5 rounded-full"
+                            style={{ background: service.color }}
+                          />
+                          <span className={isActive ? 'text-[#B7B7B2]' : 'text-[#6B6B68]'}>
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* CTA */}
+                  <button 
+                    onClick={() => navigate('/contact')}
+                    className={`
+                      mt-4 w-full py-3 rounded-xl font-medium text-sm
+                      transition-all duration-300 flex items-center justify-center gap-2
+                      ${isActive 
+                        ? 'bg-[#F5F5F2] text-[#0A0A0A] hover:bg-[#D9E6FF]' 
+                        : 'bg-[#FFFFFF]/5 text-[#6B6B68]'
+                      }
+                    `}
+                  >
+                    Get Started
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
+              );
+            })
+          }
+        </RadialScrollGallery>
+      </section>
 
-                    <MagneticButton onClick={() => navigate('/contact')}>
+      {/* Service Detail Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-50 overflow-y-auto overscroll-contain"
+            onClick={handleCloseModal}
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+            />
+
+            {/* Modal Container - Centers the content */}
+            <div className="relative min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-12">
+              {/* Modal Content */}
+              <motion.div
+                initial={{ scale: 0.3, opacity: 0, y: 100 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.3, opacity: 0, y: 100 }}
+                transition={{ 
+                  type: 'spring',
+                  damping: 25,
+                  stiffness: 300,
+                  duration: 0.5
+                }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-[#121212] border border-[#FFFFFF]/10 rounded-3xl shadow-2xl my-8"
+              >
+                {/* Close Button */}
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#1B1B1B] border border-[#FFFFFF]/10 flex items-center justify-center text-[#6B6B68] hover:text-[#F5F5F2] hover:border-[#D9E6FF] transition-all duration-300"
+              >
+                <X size={20} />
+              </button>
+
+                {/* Modal Header */}
+                <div className="p-8 sm:p-12 border-b border-[#FFFFFF]/10 sticky top-0 bg-[#121212] z-10">
+                <div className="flex items-start gap-6">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: 'spring', damping: 20 }}
+                    className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+                    style={{ background: `${selectedService.color}20` }}
+                  >
+                    <selectedService.icon size={40} style={{ color: selectedService.color }} />
+                  </motion.div>
+                  
+                  <div className="flex-1">
+                    <motion.span
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="text-sm font-mono text-[#6B6B68] mb-2 block"
+                    >
+                      Service {selectedService.id} / 05
+                    </motion.span>
+                    
+                    <motion.h2
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.15 }}
+                      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#F5F5F2] mb-4"
+                    >
+                      {selectedService.title}
+                    </motion.h2>
+                    
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 }}
+                      className="text-[#B7B7B2] text-lg"
+                    >
+                      {selectedService.description}
+                    </motion.p>
+                  </div>
+                </div>
+              </div>
+
+                {/* Modal Body */}
+                <div className="p-8 sm:p-12 space-y-12">
+                {/* Deliverables Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                    <Sparkles size={18} style={{ color: selectedService.color }} />
+                    What We Deliver
+                  </h3>
+                  
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    {selectedService.deliverables.map((item, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + i * 0.05 }}
+                        className="flex items-center gap-3 p-4 rounded-xl bg-[#1B1B1B] border border-[#FFFFFF]/5 hover:border-[#FFFFFF]/10 transition-colors"
+                      >
+                        <div
+                          className="w-2 h-2 rounded-full flex-shrink-0"
+                          style={{ background: selectedService.color }}
+                        />
+                        <span className="text-[#B7B7B2]">{item}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Process Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                    <Clock size={18} style={{ color: selectedService.color }} />
+                    Our Process
+                  </h3>
+                  
+                  <div className="space-y-4">
+                    {selectedService.process.map((step, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.4 + i * 0.08 }}
+                        className="flex gap-4 items-start"
+                      >
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 text-lg font-bold"
+                          style={{ background: `${selectedService.color}20`, color: selectedService.color }}
+                        >
+                          {step.step}
+                        </div>
+                        <div className="flex-1 pt-2">
+                          <h4 className="text-[#F5F5F2] font-medium text-lg mb-1">{step.title}</h4>
+                          <p className="text-[#6B6B68] text-sm">{step.desc}</p>
+                        </div>
+                        {i < selectedService.process.length - 1 && (
+                          <div className="hidden sm:flex items-center pt-4">
+                            <ChevronRight size={20} className="text-[#6B6B68]" />
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* CTA Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="pt-6 border-t border-[#FFFFFF]/10"
+                >
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div className="flex items-center gap-3">
+                      <Zap size={20} style={{ color: selectedService.color }} />
+                      <span className="text-[#B7B7B2]">Ready to start your project?</span>
+                    </div>
+                    
+                    <MagneticButton onClick={() => { handleCloseModal(); navigate('/contact'); }}>
                       <span className="btn-primary group">
-                        Discuss Your Project
+                        Get Started
                         <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                       </span>
                     </MagneticButton>
                   </div>
-
-                  {/* Right Content */}
-                  <div className="service-right space-y-6">
-                    {/* Deliverables Card */}
-                    <GlowCard className="p-6 md:p-8 hover:border-[#D9E6FF]/20 transition-all duration-300">
-                      <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                        <Sparkles size={16} className="text-[#D9E6FF]" />
-                        Deliverables
-                      </h3>
-                      <ul className="space-y-3">
-                        {service.deliverables.map((item, i) => (
-                          <motion.li 
-                            key={i} 
-                            className="flex items-center gap-3 group cursor-pointer"
-                            whileHover={{ x: 8 }}
-                            transition={{ type: "spring", stiffness: 400 }}
-                          >
-                            <motion.div
-                              initial={{ scale: 1 }}
-                              whileHover={{ scale: 1.2, rotate: 360 }}
-                              transition={{ duration: 0.3 }}
-                            >
-                              <CheckCircle2 size={18} className="text-[#D9E6FF] flex-shrink-0 group-hover:text-[#FFC81E] transition-colors" />
-                            </motion.div>
-                            <span className="text-[#B7B7B2] group-hover:text-[#F5F5F2] transition-colors">{item}</span>
-                          </motion.li>
-                        ))}
-                      </ul>
-                    </GlowCard>
-
-                    {/* Process Card with Connected Steps */}
-                    <GlowCard className="p-6 md:p-8 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D9E6FF]/10 to-transparent rounded-full blur-2xl" />
-                      <h3 className="text-sm font-medium text-[#F5F5F2] uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
-                        <ChevronRight size={16} className="text-[#D9E6FF]" />
-                        Our Process
-                      </h3>
-                      <div className="space-y-0 relative">
-                        {/* Vertical connecting line */}
-                        <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-gradient-to-b from-[#D9E6FF]/50 via-[#FFC81E]/50 to-[#E87F24]/50" />
-                        
-                        {service.process.map((step, i) => (
-                          <motion.div 
-                            key={i} 
-                            className="flex gap-4 group relative py-3"
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                            viewport={{ once: true }}
-                          >
-                            <motion.div 
-                              className="flex-shrink-0 w-8 h-8 rounded-full glass-badge flex items-center justify-center text-sm text-[#6B6B68] group-hover:text-[#F5F5F2] group-hover:bg-[#D9E6FF]/20 transition-all z-10"
-                              whileHover={{ scale: 1.15 }}
-                            >
-                              {step.step}
-                            </motion.div>
-                            <div className="flex-1">
-                              <h4 className="text-[#F5F5F2] font-medium mb-1 flex items-center gap-2">
-                                {step.title}
-                                <motion.span
-                                  initial={{ opacity: 0, x: -10 }}
-                                  whileInView={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: i * 0.1 + 0.2 }}
-                                >
-                                  <ChevronRight size={14} className="text-[#6B6B68] group-hover:text-[#D9E6FF] group-hover:translate-x-1 transition-all" />
-                                </motion.span>
-                              </h4>
-                              <p className="text-sm text-[#6B6B68] group-hover:text-[#B7B7B2] transition-colors">{step.desc}</p>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </GlowCard>
-                  </div>
+                  </motion.div>
                 </div>
-              </div>
-            </section>
-          );
-        })}
-      </div>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-      {/* CTA Section */}
-      <section className="py-24 px-6 lg:px-12 text-center">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-heading-1 text-[#F5F5F2] mb-6">
+      {/* Final CTA Section */}
+      <section className="min-h-[50vh] flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 relative py-16 sm:py-24">
+        <div className="text-center max-w-3xl mx-auto">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-heading-1 text-[#F5F5F2] mb-4 sm:mb-6"
+          >
             Ready to get started?
-          </h2>
-          <p className="text-lg text-[#B7B7B2] mb-8">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-lg text-[#B7B7B2] mb-8"
+          >
             Let's discuss how we can help transform your business.
-          </p>
-          <MagneticButton onClick={() => navigate('/contact')}>
-            <span className="btn-primary text-base py-4 px-8">
-              Start a Conversation
-              <ArrowRight size={18} />
-            </span>
-          </MagneticButton>
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <MagneticButton onClick={() => navigate('/contact')}>
+              <span className="btn-primary text-base py-4 px-8">
+                Start a Conversation
+                <ArrowRight size={18} />
+              </span>
+            </MagneticButton>
+          </motion.div>
         </div>
       </section>
     </div>
