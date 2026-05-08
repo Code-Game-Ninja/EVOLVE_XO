@@ -1,8 +1,13 @@
 import { SplitText } from '../components/ui/SplitText';
+import { SEO } from '../components/SEO';
 
 export const PrivacyPage = () => {
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Privacy Policy | Data Protection"
+        description="Our commitment to your privacy and how we handle your personal data at EVOLVEXO Technologies."
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">

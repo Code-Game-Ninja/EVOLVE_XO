@@ -4,6 +4,7 @@ import { Mail, MapPin, Check, Sparkles, Send, Clock, Globe, Zap } from 'lucide-r
 import { SplitText } from '../components/ui/SplitText';
 import { MagneticButton } from '../components/ui/MagneticButton';
 import { Spotlight } from '../components/ui/Spotlight';
+import { SEO } from '../components/SEO';
 
 const services = [
   'AI SaaS Development',
@@ -37,6 +38,10 @@ export const ContactPage = () => {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <SEO 
+        title="Contact Us | Start Your Next Project"
+        description="Get in touch with EVOLVEXO Technologies. We're ready to discuss your next AI SaaS, custom software, or digital marketing project."
+      />
       {/* Spotlight Background Effects */}
       <Spotlight className="top-20 left-1/4 w-[500px] h-[500px]" fill="#D9E6FF" />
       <Spotlight className="bottom-20 right-1/4 w-[400px] h-[400px]" fill="#FFC81E" />

@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from '../components/ui/SplitText';
 import { Terminal } from '../components/ui/terminal';
 import { ExpandableCardGrid } from '../components/ui/ExpandableCard';
+import { SEO } from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +32,10 @@ export const WorkPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Our Work | Portfolio of Digital Excellence"
+        description="Explore our portfolio of successful projects including AI SaaS platforms, custom enterprise software, and high-performance web applications."
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">

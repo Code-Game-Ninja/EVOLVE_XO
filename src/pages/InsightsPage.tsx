@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Clock } from 'lucide-react';
 import { SplitText } from '../components/ui/SplitText';
 import { GlowCard } from '../components/ui/GlowCard';
+import { SEO } from '../components/SEO';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,6 +96,10 @@ export const InsightsPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Insights | Thoughts on Technology & Engineering"
+        description="Perspectives on AI, enterprise software architecture, digital transformation, and modern engineering practices from EVOLVEXO."
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">

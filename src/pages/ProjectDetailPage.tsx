@@ -3,6 +3,7 @@ import { ArrowLeft, ExternalLink, Check, ArrowRight } from 'lucide-react';
 import { SplitText } from '../components/ui/SplitText';
 import { GlowCard } from '../components/ui/GlowCard';
 import { MagneticButton } from '../components/ui/MagneticButton';
+import { SEO } from '../components/SEO';
 
 const projects = [
   {
@@ -176,6 +177,10 @@ export const ProjectDetailPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title={`${project.name} | ${project.category} Case Study`}
+        description={project.description}
+      />
       {/* Hero Header */}
       <section className={`relative pt-32 pb-24 px-6 lg:px-12 bg-gradient-to-br ${project.gradient}`}>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-transparent" />

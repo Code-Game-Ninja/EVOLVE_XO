@@ -3,6 +3,7 @@ import { ChevronDown, MapPin, Clock, ArrowRight, CheckCircle2 } from 'lucide-rea
 import { SplitText } from '../components/ui/SplitText';
 import { GlowCard } from '../components/ui/GlowCard';
 import { MagneticButton } from '../components/ui/MagneticButton';
+import { SEO } from '../components/SEO';
 
 const roles = [
   {
@@ -87,6 +88,10 @@ export const CareersPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO 
+        title="Careers | Join Our Team of Engineers & Designers"
+        description="Join EVOLVEXO Technologies and help us build the future of digital products. Explore open roles in engineering, AI, and design."
+      />
       {/* Hero */}
       <section className="pt-32 pb-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto text-center">

@@ -71,67 +71,78 @@ export const Services = () => {
   const [activeService, setActiveService] = useState(0);
 
   useEffect(() => {
-    sectionsRef.current.forEach((section, index) => {
-      if (!section) return;
+    const ctx = gsap.context(() => {
+      sectionsRef.current.forEach((section, index) => {
+        if (!section) return;
 
-      const ghostNumber = section.querySelector('.ghost-number');
-      const iconWrapper = section.querySelector('.icon-wrapper');
-      const content = section.querySelector('.service-content');
-      const deliverables = section.querySelectorAll('.deliverable-item');
+        const ghostNumber = section.querySelector('.ghost-number');
+        const iconWrapper = section.querySelector('.icon-wrapper');
+        const content = section.querySelector('.service-content');
+        const deliverables = section.querySelectorAll('.deliverable-item');
 
-      const isDesktop = window.innerWidth >= 1024;
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          end: isDesktop ? '+=250%' : '+=100%',
-          pin: isDesktop,
-          scrub: 0.8,
-          onEnter: () => setActiveService(index),
-          onEnterBack: () => setActiveService(index),
-        }
+        const isDesktop = window.innerWidth >= 1024;
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: 'top top',
+            end: isDesktop ? '+=150%' : '+=100%',
+            pin: isDesktop,
+            pinSpacing: isDesktop,
+            scrub: 1,
+            onEnter: () => setActiveService(index),
+            onEnterBack: () => setActiveService(index),
+            anticipatePin: 1,
+          }
+        });
+
+        tl.fromTo(ghostNumber, 
+          { opacity: 0, scale: 2, y: 100 },
+          { opacity: 0.03, scale: 1, y: 0, duration: 0.3 }
+        );
+
+        tl.fromTo(iconWrapper,
+          { scale: 0, rotation: -180, opacity: 0 },
+          { scale: 1, rotation: 0, opacity: 1, duration: 0.25, ease: 'back.out(1.7)' },
+          0.1
+        );
+
+        tl.fromTo(content,
+          { x: 100, opacity: 0 },
+          { x: 0, opacity: 1, duration: 0.2 },
+          0.2
+        );
+
+        tl.fromTo(deliverables,
+          { x: -30, opacity: 0 },
+          { x: 0, opacity: 1, stagger: 0.05, duration: 0.15 },
+          0.4
+        );
+
+        // Add some breathing room at the end
+        tl.to({}, { duration: 0.3 });
+
+        tl.to([iconWrapper, content, ghostNumber], {
+          y: -100,
+          opacity: 0,
+          duration: 0.2,
+          stagger: 0.05
+        });
       });
+    }, containerRef);
 
-      tl.fromTo(ghostNumber, 
-        { opacity: 0, scale: 2, y: 100 },
-        { opacity: 0.03, scale: 1, y: 0, duration: 0.3 }
-      );
-
-      tl.fromTo(iconWrapper,
-        { scale: 0, rotation: -180, opacity: 0 },
-        { scale: 1, rotation: 0, opacity: 1, duration: 0.25, ease: 'back.out(1.7)' },
-        0.1
-      );
-
-      tl.fromTo(content,
-        { x: 100, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.2 },
-        0.2
-      );
-
-      tl.fromTo(deliverables,
-        { x: -30, opacity: 0 },
-        { x: 0, opacity: 1, stagger: 0.05, duration: 0.15 },
-        0.4
-      );
-
-      tl.to({}, { duration: 0.3 });
-
-      tl.to([iconWrapper, content, ghostNumber], {
-        y: -100,
-        opacity: 0,
-        duration: 0.2,
-        stagger: 0.05
-      });
-    });
+    // Refresh ScrollTrigger after a short delay
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
 
     return () => {
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      ctx.revert();
+      clearTimeout(timer);
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="relative bg-[#101010]">
+    <div ref={containerRef} className="relative z-10 bg-[#101010]">
       {/* Progress Indicator */}
       <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3">
         {services.map((_, index) => (

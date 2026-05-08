@@ -65,7 +65,7 @@ export const Footer = () => {
   return (
     <footer 
       ref={footerRef}
-      className="fixed bottom-0 left-0 right-0 z-0 pt-24 pb-12 px-6 lg:px-12 bg-[#1E1E1E]"
+      className="fixed bottom-0 left-0 right-0 z-[-1] pt-24 pb-12 px-6 lg:px-12 bg-[#1E1E1E]"
       style={{ 
         // Negative margin to account for any spacing issues
         marginTop: '-1px'
